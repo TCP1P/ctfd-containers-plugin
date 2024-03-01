@@ -1,0 +1,31 @@
+{% extends "challenge.html" %}
+
+{% block connection_info %}
+<button type="submit" class="btn btn-success w-100 mb-2" id="container-request-btn" onclick="containerRequest({{ challenge.id }})">
+	<i class="fas fa-network-wired me-2"></i> Get Connection Info
+</button>
+
+<div class="border rounded p-2 mb-2" id="container-request-result" style="display: none;">
+	<div class="d-flex justify-content-center">
+		<b>Connection Info</b>
+	</div>
+	<p class="text-center text-muted">Expires in <span id="container-expires"></span> (<span id="container-expires-time"></span>)</p>
+	<p class="text-center fw-bold" id="container-connection-info"></p>
+
+	<div class="d-flex justify-content-between mt-4">
+		<button type="submit" class="btn btn-danger" id="container-stop-btn"
+			onclick="containerStop({{ challenge.id }})"><i class="fas fa-stop"></i> Stop</button>
+
+		<div class="d-flex justify-content-between gap-2">
+			<button type="submit" class="btn btn-warning" id="container-reset-btn"
+				onclick="containerReset({{ challenge.id }})"><i class="fas fa-undo"></i> Reset</button>
+			<button type="submit" class="btn btn-success ml-2" id="container-renew-btn"
+				onclick="containerRenew({{ challenge.id }})"><i class="fas fa-sync"></i> Renew</button>
+		</div>
+	</div>
+</div>
+
+<div id="container-request-error" class="alert alert-danger alert-dismissable text-center mt-3" role="alert" style="display: none;">
+	<strong id="result-message">Error</strong>
+</div>
+{% endblock %}
